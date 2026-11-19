@@ -1,4 +1,5 @@
 import Link from "next/link";
+import canhDao from "@/assets/hoa-tiet/canh-dao.svg";
 import { home, seasons } from "@/content/site";
 import { Seal } from "../Seal";
 import { StarLantern } from "../motifs";
@@ -19,7 +20,7 @@ export function SeasonDoors() {
                 {s.id === "tet" ? (
                   <>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img className="door-dao" src="/hoa-tiet/canh-dao.svg" alt="" />
+                    <img className="door-dao" src={canhDao.src} alt="" />
                     <span className="door-glyph callig">Tết</span>
                   </>
                 ) : (

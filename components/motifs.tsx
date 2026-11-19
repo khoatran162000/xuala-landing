@@ -1,6 +1,6 @@
 /**
  * Hoạ tiết vẽ bằng SVG — hình minh hoạ gốc, không phải ảnh sản phẩm.
- * Các hoạ tiết dạng nền (giấy dó, nan mây, ngói, hồi văn, bóng làng quê, cành đào, mẹt tre) nằm ở public/hoa-tiet.
+ * Các hoạ tiết dạng nền (giấy dó, nan mây, ngói, hồi văn, bóng làng quê, cành đào, mẹt tre) nằm ở assets/hoa-tiet (sinh bằng scripts/gen-hoa-tiet.py).
  */
 import type { SVGProps } from "react";
 

@@ -1,3 +1,4 @@
+import metTre from "@/assets/hoa-tiet/met-tre.svg";
 import { tetPantry } from "@/content/qua-tet";
 
 /** Tờ giấy hồng điều viết tay danh sách món, như tờ giấy đỏ dán ngày Tết. */
@@ -22,7 +23,7 @@ export function TetPantry() {
             </div>
           ))}
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img className="pantry-met" src="/hoa-tiet/met-tre.svg" alt="" aria-hidden="true" />
+          <img className="pantry-met" src={metTre.src} alt="" aria-hidden="true" />
         </div>
       </div>
     </section>

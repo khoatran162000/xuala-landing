@@ -4,6 +4,7 @@ import Image from "next/image";
 import { site } from "@/content/site";
 import type { GiftSet, Season } from "@/content/types";
 import { chooseSet } from "@/lib/choose-set";
+import { withBase } from "@/lib/deploy";
 import { CaneHandle } from "../motifs";
 
 function SetCard({ set, season }: { set: GiftSet; season: Season }) {
@@ -14,7 +15,7 @@ function SetCard({ set, season }: { set: GiftSet; season: Season }) {
         <CaneHandle className="set-handle" />
         <div className={`set-face weave weave--${set.box}`}>
           {set.image ? (
-            <Image src={set.image} alt={`Hộp quà ${set.name}`} fill sizes="(max-width: 640px) 100vw, 33vw" />
+            <Image src={withBase(set.image)} alt={`Hộp quà ${set.name}`} fill sizes="(max-width: 640px) 100vw, 33vw" />
           ) : (
             <div className="set-label" aria-hidden="true">
               <span className="set-count">{set.count}</span>

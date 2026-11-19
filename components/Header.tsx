@@ -9,7 +9,7 @@ import { RiceStalk } from "./motifs";
 
 export function Header() {
   const [open, setOpen] = useState(false);
-  const pathname = usePathname();
+  const pathname = (usePathname() ?? "/").replace(/(.)\/$/, "$1");
   const onHome = pathname === "/";
 
   const links = [
@@ -58,6 +58,10 @@ export function Header() {
                 className={`nav-season nav-season--${l.href.slice(1)}`}
                 aria-current={pathname === l.href ? "page" : undefined}
               >
+                {l.label}
+              </Link>
+            ) : l.href.startsWith("/") ? (
+              <Link key={l.label} href={l.href} onClick={() => setOpen(false)}>
                 {l.label}
               </Link>
             ) : (

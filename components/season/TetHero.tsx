@@ -1,3 +1,4 @@
+import canhDao from "@/assets/hoa-tiet/canh-dao.svg";
 import { tet, tetPantry } from "@/content/qua-tet";
 import { TetCalendar } from "./TetCalendar";
 
@@ -7,7 +8,7 @@ export function TetHero() {
   return (
     <section className="tet-hero" id="top" aria-labelledby="tet-title">
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img className="tet-dao" src="/hoa-tiet/canh-dao.svg" alt="" aria-hidden="true" />
+      <img className="tet-dao" src={canhDao.src} alt="" aria-hidden="true" />
       <div className="wrap tet-hero-inner">
         {/* Câu đối treo theo lối xưa: vế trên bên phải, vế dưới bên trái. */}
         <p className="sr-only">

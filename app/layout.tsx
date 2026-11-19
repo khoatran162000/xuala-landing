@@ -5,6 +5,7 @@ import "./globals.css";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { site } from "@/content/site";
+import { isStaticPreview } from "@/lib/deploy";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -31,7 +32,7 @@ export const metadata: Metadata = {
     title: `${site.name} — ${site.slogan}`,
     description: site.description,
   },
-  robots: { index: true, follow: true },
+  robots: isStaticPreview ? { index: false, follow: false } : { index: true, follow: true },
 };
 
 export const viewport: Viewport = {

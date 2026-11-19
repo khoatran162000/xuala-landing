@@ -46,11 +46,11 @@ Logo: đang dùng chữ "Xưa Là" font Charm + bông lúa vẽ lại; khi có f
 
 ## Hoạ tiết
 
-Hoạ tiết nền nằm ở `public/hoa-tiet/` (giấy dó, nan mây đan, ngói âm dương, hồi văn, mẹt tre, bóng làng quê,
-cành đào, cây đa trong trăng, mặt nạ con dấu). Tất cả sinh từ `scripts/gen-hoa-tiet.py` (Python 3, không cần thư viện):
+Hoạ tiết nền nằm ở `assets/hoa-tiet/` (giấy dó, nan mây đan, ngói âm dương, hồi văn, mẹt tre, bóng làng quê,
+cành đào, cây đa trong trăng, mặt nạ con dấu). Chúng được đóng gói qua CSS và `import`, nên tự có đúng tiền tố đường dẫn khi chạy dưới thư mục con trên GitHub Pages. Tất cả sinh từ `scripts/gen-hoa-tiet.py` (Python 3, không cần thư viện):
 
 ```bash
-cd xuala-landing && python3 scripts/gen-hoa-tiet.py public/hoa-tiet
+cd xuala-landing && python3 scripts/gen-hoa-tiet.py assets/hoa-tiet
 ```
 
 Hoạ tiết vẽ thẳng trong React (mặt trời trống đồng, đàn cò, đèn ông sao, mây cuộn, bánh Trung thu, quai mây,
@@ -63,6 +63,27 @@ cd xuala-landing && npm install && npm run dev
 ```
 
 Mở http://localhost:3000. Khi chưa cấu hình SMTP, yêu cầu gửi từ form vẫn được lưu ở `data/leads.jsonl`.
+
+## Bản xem thử trên GitHub Pages
+
+Workflow `.github/workflows/github-pages.yml` build site thành trang tĩnh (`GITHUB_PAGES=true`) và đăng lên
+`https://<tài-khoản>.github.io/<tên-repo>/` mỗi lần push lên nhánh `main`.
+
+1. Tạo repo trống trên GitHub, ví dụ `xuala-landing`. Tài khoản GitHub Free cần để repo **Public**.
+2. Đẩy code lên:
+   ```bash
+   cd xuala-landing && git init -b main && git add . && git commit -m "Landing Xưa Là" && git remote add origin https://github.com/<tài-khoản>/xuala-landing.git && git push -u origin main
+   ```
+3. Trên GitHub: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+4. Vào tab **Actions**, chạy lại workflow "Bản xem thử (GitHub Pages)" nếu lần push đầu chạy trước khi bật Pages. Xong là có link.
+
+Khác với bản VPS:
+- Không có API: form vẫn kiểm tra dữ liệu như thật nhưng chỉ báo "đây là bản xem thử", không gửi đi.
+  Muốn form gửi thật, tạo endpoint ở Formspree (hoặc dịch vụ nhận form tương tự), rồi thêm biến repo
+  `FORM_ENDPOINT` (Settings → Secrets and variables → Actions → Variables) và chạy lại workflow.
+- Trang gắn `noindex` và `robots.txt` chặn toàn bộ, để Google không lập chỉ mục bản nháp.
+- Build thử trên máy (thư mục `out/`): xoá tạm `app/api` trong một bản sao rồi chạy
+  `GITHUB_PAGES=true PAGES_BASE_PATH=/xuala-landing npx next build`.
 
 ## Triển khai lên VPS (PM2 + Nginx)
 
@@ -89,7 +110,8 @@ components/home/        HomeHero, SeasonDoors, Memories, Constants, Story
 components/season/      TetHero, TetCalendar, TetPantry, MoonHero, Flavors, SetGrid, CrossSeason, PromoRibbon
 content/                site.ts (chung), qua-tet.ts, qua-trung-thu.ts, types.ts
 lib/                    schema form, gửi email/Telegram, giới hạn gửi, JSON-LD
-public/hoa-tiet/        hoạ tiết nền SVG
+assets/hoa-tiet/        hoạ tiết nền SVG
+.github/workflows/       build và đăng bản xem thử lên GitHub Pages
 scripts/                gen-hoa-tiet.py
 deploy/                 cấu hình Nginx mẫu
 ```

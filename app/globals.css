@@ -47,7 +47,7 @@ html {
 
 body {
   margin: 0;
-  background: var(--giay) url(/hoa-tiet/giay-do.svg) 0 0 / 420px;
+  background: var(--giay) url(../assets/hoa-tiet/giay-do.svg) 0 0 / 420px;
   color: var(--than);
   font-family: var(--chu);
   font-size: 1.125rem;
@@ -235,15 +235,15 @@ p {
   border-radius: 3px;
   box-shadow: inset 0 0 0 2px var(--son), inset 0 0 0 3.5px rgba(255, 243, 230, 0.75);
   transform: rotate(-4deg);
-  -webkit-mask: url(/hoa-tiet/dau-mask.svg) 0 0 / 120px;
-  mask: url(/hoa-tiet/dau-mask.svg) 0 0 / 120px;
+  -webkit-mask: url(../assets/hoa-tiet/dau-mask.svg) 0 0 / 120px;
+  mask: url(../assets/hoa-tiet/dau-mask.svg) 0 0 / 120px;
 }
 
 /* ---------- Mặt nan mây đan ---------- */
 
 .weave {
   background-color: var(--son);
-  background-image: url(/hoa-tiet/may-dan.svg);
+  background-image: url(../assets/hoa-tiet/may-dan.svg);
   background-size: 20px 20px;
 }
 .weave--ngoc {
@@ -259,7 +259,7 @@ p {
   position: sticky;
   top: 0;
   z-index: 40;
-  background: rgba(234, 220, 190, 0.94) url(/hoa-tiet/giay-do.svg) 0 0 / 420px;
+  background: rgba(234, 220, 190, 0.94) url(../assets/hoa-tiet/giay-do.svg) 0 0 / 420px;
   backdrop-filter: blur(8px);
 }
 .header::after {
@@ -271,8 +271,8 @@ p {
   bottom: -9px;
   height: 9px;
   background: var(--son);
-  -webkit-mask: url(/hoa-tiet/hoi-van.svg) 0 0 / 14px 9px repeat-x;
-  mask: url(/hoa-tiet/hoi-van.svg) 0 0 / 14px 9px repeat-x;
+  -webkit-mask: url(../assets/hoa-tiet/hoi-van.svg) 0 0 / 14px 9px repeat-x;
+  mask: url(../assets/hoa-tiet/hoi-van.svg) 0 0 / 14px 9px repeat-x;
   opacity: 0.85;
 }
 .header-inner {
@@ -359,7 +359,7 @@ p {
     align-items: stretch;
     gap: 0;
     padding: 8px var(--gutter) 22px;
-    background: var(--giay) url(/hoa-tiet/giay-do.svg) 0 0 / 420px;
+    background: var(--giay) url(../assets/hoa-tiet/giay-do.svg) 0 0 / 420px;
     border-bottom: 1px solid var(--vien);
     box-shadow: 0 20px 30px -20px rgba(42, 33, 27, 0.5);
   }
@@ -457,8 +457,8 @@ p {
   bottom: 0;
   height: var(--lang-h);
   background: var(--than);
-  -webkit-mask: url(/hoa-tiet/lang-que.svg) center bottom / cover no-repeat;
-  mask: url(/hoa-tiet/lang-que.svg) center bottom / cover no-repeat;
+  -webkit-mask: url(../assets/hoa-tiet/lang-que.svg) center bottom / cover no-repeat;
+  mask: url(../assets/hoa-tiet/lang-que.svg) center bottom / cover no-repeat;
 }
 .home-hero-inner {
   position: relative;
@@ -529,7 +529,7 @@ p {
   overflow: hidden;
 }
 .door--tet .door-art {
-  background: var(--son) url(/hoa-tiet/giay-do.svg) 0 0 / 420px;
+  background: var(--son) url(../assets/hoa-tiet/giay-do.svg) 0 0 / 420px;
   background-blend-mode: multiply;
 }
 .door-dao {
@@ -572,8 +572,8 @@ p {
   position: absolute;
   inset: 8% 8% -4%;
   background: rgba(150, 92, 28, 0.45);
-  -webkit-mask: url(/hoa-tiet/cay-da.svg) center bottom / contain no-repeat;
-  mask: url(/hoa-tiet/cay-da.svg) center bottom / contain no-repeat;
+  -webkit-mask: url(../assets/hoa-tiet/cay-da.svg) center bottom / contain no-repeat;
+  mask: url(../assets/hoa-tiet/cay-da.svg) center bottom / contain no-repeat;
 }
 .door-lantern {
   position: absolute;
@@ -730,7 +730,7 @@ p {
   width: 100%;
   height: 136px;
   padding: 16px;
-  background: var(--tint) url(/hoa-tiet/giay-do.svg) 0 0 / 420px;
+  background: var(--tint) url(../assets/hoa-tiet/giay-do.svg) 0 0 / 420px;
   background-blend-mode: multiply;
   color: #f7ecd4;
   stroke-width: 1.7;
@@ -838,7 +838,7 @@ p {
   position: relative;
   margin: 18px 10px;
   padding: clamp(32px, 5vw, 56px) clamp(26px, 4vw, 52px) clamp(40px, 5vw, 60px);
-  background: #f3e9d2 url(/hoa-tiet/giay-do.svg) 0 0 / 420px;
+  background: #f3e9d2 url(../assets/hoa-tiet/giay-do.svg) 0 0 / 420px;
   box-shadow: 0 30px 50px -30px rgba(60, 30, 10, 0.55);
 }
 .scroll::before,
@@ -955,8 +955,8 @@ p {
   top: 22px;
   height: 11px;
   background: var(--hoe);
-  -webkit-mask: url(/hoa-tiet/hoi-van.svg) 0 0 / 17px 11px repeat-x;
-  mask: url(/hoa-tiet/hoi-van.svg) 0 0 / 17px 11px repeat-x;
+  -webkit-mask: url(../assets/hoa-tiet/hoi-van.svg) 0 0 / 17px 11px repeat-x;
+  mask: url(../assets/hoa-tiet/hoi-van.svg) 0 0 / 17px 11px repeat-x;
   opacity: 0.7;
 }
 .biz-head {
@@ -1128,8 +1128,8 @@ p {
   top: 0;
   height: 9px;
   background: var(--son);
-  -webkit-mask: url(/hoa-tiet/hoi-van.svg) 0 0 / 14px 9px repeat-x;
-  mask: url(/hoa-tiet/hoi-van.svg) 0 0 / 14px 9px repeat-x;
+  -webkit-mask: url(../assets/hoa-tiet/hoi-van.svg) 0 0 / 14px 9px repeat-x;
+  mask: url(../assets/hoa-tiet/hoi-van.svg) 0 0 / 14px 9px repeat-x;
   opacity: 0.6;
 }
 .contact-grid {
@@ -1274,6 +1274,10 @@ fieldset.field {
   background: #dfeee6;
   color: var(--ngoc-dam);
 }
+.form-status--preview {
+  background: #f3e6c4;
+  color: #5a4210;
+}
 .form-status--err {
   background: #f6e0dc;
   color: var(--son-dam);
@@ -1396,7 +1400,7 @@ fieldset.field {
   right: 0;
   top: -24px;
   height: 26px;
-  background: url(/hoa-tiet/ngoi.svg) 0 0 / 44px 26px repeat-x;
+  background: url(../assets/hoa-tiet/ngoi.svg) 0 0 / 44px 26px repeat-x;
 }
 .footer-top {
   display: grid;
@@ -1660,7 +1664,7 @@ fieldset.field {
   background: radial-gradient(ellipse at 85% 30%, #2c3a6b, var(--cham) 50%, var(--cham-dam));
 }
 .cross--tet {
-  background: var(--son) url(/hoa-tiet/giay-do.svg) 0 0 / 420px;
+  background: var(--son) url(../assets/hoa-tiet/giay-do.svg) 0 0 / 420px;
   background-blend-mode: multiply;
 }
 .cross-inner {
@@ -1707,7 +1711,7 @@ fieldset.field {
   content: "";
   position: absolute;
   inset: 0;
-  background: url(/hoa-tiet/giay-do.svg) 0 0 / 420px;
+  background: url(../assets/hoa-tiet/giay-do.svg) 0 0 / 420px;
   opacity: 0.55;
   pointer-events: none;
 }
@@ -2250,7 +2254,7 @@ fieldset.field {
   width: min(100%, 600px);
   aspect-ratio: 1;
   justify-self: center;
-  background: url(/hoa-tiet/met-tre.svg) center / contain no-repeat;
+  background: url(../assets/hoa-tiet/met-tre.svg) center / contain no-repeat;
   filter: drop-shadow(0 30px 34px rgba(60, 30, 10, 0.4));
 }
 .tray-cakes {

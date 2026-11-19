@@ -4,8 +4,50 @@ import { useEffect, useRef, useState, type FormEvent } from "react";
 import { activeSeason, seasonById, seasons, site } from "@/content/site";
 import type { SeasonId } from "@/content/types";
 import { CHOOSE_SET_EVENT, type ChooseSetDetail } from "@/lib/choose-set";
+import { isStaticPreview } from "@/lib/deploy";
+import { leadSchema } from "@/lib/lead";
 
-type Status = { kind: "idle" } | { kind: "sending" } | { kind: "ok" } | { kind: "err"; message: string };
+type Status =
+  | { kind: "idle" }
+  | { kind: "sending" }
+  | { kind: "ok" }
+  | { kind: "preview" }
+  | { kind: "err"; message: string };
+
+type SendResult = { ok: boolean; message?: string; fieldErrors?: Record<string, string> };
+
+/**
+ * Bản xem thử tĩnh không có /api/lien-he. Nếu đặt NEXT_PUBLIC_FORM_ENDPOINT (ví dụ Formspree)
+ * thì gửi tới đó; nếu không, chỉ kiểm tra dữ liệu ngay trên trình duyệt rồi báo đây là bản xem thử.
+ */
+const PREVIEW_ENDPOINT = process.env.NEXT_PUBLIC_FORM_ENDPOINT || "";
+
+async function sendPreview(data: Record<string, FormDataEntryValue>): Promise<SendResult | "preview"> {
+  const parsed = leadSchema.safeParse(data);
+  if (!parsed.success) {
+    const fieldErrors: Record<string, string> = {};
+    for (const issue of parsed.error.issues) fieldErrors[String(issue.path[0] ?? "form")] ??= issue.message;
+    if (fieldErrors.website) return { ok: true };
+    return { ok: false, message: "Kiểm tra lại các ô được đánh dấu.", fieldErrors };
+  }
+  if (!PREVIEW_ENDPOINT) return "preview";
+  const res = await fetch(PREVIEW_ENDPOINT, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", Accept: "application/json" },
+    body: JSON.stringify(parsed.data),
+  });
+  return res.ok ? { ok: true } : { ok: false, message: "Chưa gửi được yêu cầu. Thử lại hoặc nhắn Zalo cho Xưa Là." };
+}
+
+async function sendToApi(data: Record<string, FormDataEntryValue>): Promise<SendResult> {
+  const res = await fetch("/api/lien-he", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+  const json = (await res.json().catch(() => ({}))) as SendResult;
+  return { ...json, ok: res.ok && !!json.ok };
+}
 
 const BUSINESS_QUOTE = "Báo giá doanh nghiệp";
 
@@ -46,17 +88,12 @@ export function ContactForm({ season }: { season?: SeasonId }) {
     setStatus({ kind: "sending" });
     setErrors({});
     try {
-      const res = await fetch("/api/lien-he", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-      const json = (await res.json().catch(() => ({}))) as {
-        ok?: boolean;
-        message?: string;
-        fieldErrors?: Record<string, string>;
-      };
-      if (res.ok && json.ok) {
+      const json = isStaticPreview ? await sendPreview(data) : await sendToApi(data);
+      if (json === "preview") {
+        setStatus({ kind: "preview" });
+        return;
+      }
+      if (json.ok) {
         setStatus({ kind: "ok" });
         form.reset();
         setInterest("");
@@ -206,6 +243,12 @@ export function ContactForm({ season }: { season?: SeasonId }) {
       {status.kind === "ok" && (
         <p className="form-status form-status--ok" role="status">
           Đã gửi yêu cầu. Xưa Là sẽ gọi lại cho bạn qua số điện thoại vừa nhập. Cần gấp, gọi {site.contact.hotline}.
+        </p>
+      )}
+      {status.kind === "preview" && (
+        <p className="form-status form-status--preview" role="status">
+          Thông tin đã hợp lệ. Đây là bản xem thử nên yêu cầu chưa được gửi đi; trên website chính thức, yêu cầu
+          sẽ về thẳng email và Telegram của Xưa Là.
         </p>
       )}
       {status.kind === "err" && (

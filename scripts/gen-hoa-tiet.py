@@ -1,5 +1,5 @@
 """Sinh các tệp hoạ tiết SVG cho landing Xưa Là.
-Chạy: python3 scripts/gen-hoa-tiet.py public/hoa-tiet   (chỉ cần Python 3, không cần thư viện ngoài)
+Chạy: python3 scripts/gen-hoa-tiet.py assets/hoa-tiet   (chỉ cần Python 3, không cần thư viện ngoài)
 """
 import math
 import random
